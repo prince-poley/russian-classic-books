@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root {
-  --main-color: Indigo;
+  --main-color: SaddleBrown;
 }
 
 * {
@@ -17,7 +17,7 @@ img {
 }
 
 body {
-  background-color: var(--main-color);
+  background: url("./assets/img/main-background.jpg") no-repeat center center/cover;
 }
 
 .App {

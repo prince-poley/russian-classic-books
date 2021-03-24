@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 export default function AuthorItem({ photo, name, facts, popularBooks }) {
   
   const [interestingFacts, setInterestingFacts] = useState(facts[0]);
@@ -26,11 +26,24 @@ export default function AuthorItem({ photo, name, facts, popularBooks }) {
         <div className="mt-5">
           {
             popularBooks.length > 0 
-            ? popularBooks.map(book => <div>- { book.title }</div>)
+            ? popularBooks.map(book => <div key={book.id} >- { book.title }</div>)
             : <div>Данный раздел еще не заполнен</div>
           }
         </div>
       </div>
     </div>
   )
+}
+
+AuthorItem.propTypes = {
+  photo: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  facts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired
+  })).isRequired,
+  popularBooks: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired
+  }))
 }
