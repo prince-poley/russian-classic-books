@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
-
-
 const SortPopup = ({ items }) => {
 
   let [isVisiblePopup, setIsVisiblePopup] = useState(false);
   let [activeItem, setActiveItem] = useState(0);
   
-  const activeSortItem = items[activeItem];
+  const activeSortItem = items[activeItem].name;
 
   const sortRef = useRef();
 
@@ -34,14 +32,14 @@ const SortPopup = ({ items }) => {
       Сортировка по <span onClick={toggleVisiblePopup} className="sorted-title">{activeSortItem}</span>
       <div className={isVisiblePopup ? "sorted-popup" : "sorted-popup hide"}>
         {
-          items?.map((name, index) => {
+          items?.map((item, index) => {
             return (
               <div
                 onClick={() => chooseSortItem(index)}
                 className={activeItem === index ? "sorted-popup__item active" : "sorted-popup__item"} 
-                key={`${name}_${index}`}
+                key={`${item.name}_${index}`}
               >
-                {name}
+                {item.name}
               </div>      
             )
           })
